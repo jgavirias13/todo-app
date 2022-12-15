@@ -1,0 +1,14 @@
+.Header{
+  background-color: #53EBF4;
+  padding: 1px 0px 1px 20px;
+  color: white;
+  box-shadow: 0px 5px 6px 0px #D6D6D6;
+}
+
+.Header-AppTitle {
+  font-size: 1.5em;
+}
+
+.Header-AppSubtitle {
+  font-weight: 300;
+}

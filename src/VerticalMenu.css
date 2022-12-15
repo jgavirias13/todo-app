@@ -1,0 +1,41 @@
+.VerticalMenu {
+  width: 150px;
+  height: 100%;
+  padding-left: 15px;
+  display: flex;
+}
+
+.VerticalMenu-line {
+  margin-left: 20px;
+  border-left: 1px solid #CFD8DC;
+  height: 100%;
+}
+
+.VerticalMenu-search {
+  margin-top: 40px;
+}
+
+.VerticalMenu-filterOptions {
+  margin-top: 28px;
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.VerticalMenu-filterOptions li {
+  margin-bottom: 15px;
+}
+
+.VerticalMenu-filterOptionsIcon {
+  color: #546E7A;
+  font-size: 1.2em;
+  margin-right: 18px;
+}
+
+.VerticalMenu-filterOptionsText {
+  color: #546E7A;
+  font-weight: 500;
+}
+
+.VerticalMenu-filterOptionsActive {
+  color: #53EBF4;
+}

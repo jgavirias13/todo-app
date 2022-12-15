@@ -1,0 +1,22 @@
+.CreateTodoButton {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: white;
+  background-color: #53EBF4;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 5px 6px 0px #D6D6D6;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+}
+
+.CreateTodoButtonAdd {
+  font-size: 2.2em;
+}
+
+.CreateTodoButtonText {
+  font-size: 1.1em;
+  font-weight: 600px;
+}

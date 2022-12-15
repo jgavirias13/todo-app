@@ -1,9 +1,13 @@
 import React from 'react';
 import './TodoSearch.css';
+import { AiOutlineSearch} from 'react-icons/ai';
 
 function TodoSearch() {
   return (
-    <input placeholder="cebolla"/>
+    <div>
+      <input className='TodoSearch' placeholder="Search" />
+      <AiOutlineSearch className='TodoSearch-icon'/>
+    </div>
   )
 }
 

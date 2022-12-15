@@ -1,9 +1,11 @@
 import React from 'react';
 import { TodoCounter } from './TodoCounter';
-import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
 import { CreateTodoButton } from './CreateTodoButton';
 import { TodoItem } from './TodoItem';
+import { Header } from './Header';
+import { VerticalMenu } from './VerticalMenu';
+import './App.css';
 
 const todos = [
   { id: 1, text: 'Cortar Cebolla', completed: false },
@@ -14,14 +16,19 @@ const todos = [
 function App() {
   return (
     <React.Fragment>
-      <TodoCounter />
-      <TodoSearch />
-      <TodoList>
-        {todos.map(todo => (
-          <TodoItem key={todo.id} text={todo.text} />
-        ))}
-      </TodoList>
-      <CreateTodoButton />
+      <Header />
+      <div className='container'>
+        <VerticalMenu />
+        <div>
+          <TodoCounter />
+          <TodoList>
+            {todos.map(todo => (
+              <TodoItem key={todo.id} text={todo.text} />
+            ))}
+          </TodoList>
+          <CreateTodoButton />
+        </div>
+      </div>
     </React.Fragment>
   );
 }
