@@ -3,3 +3,9 @@
   grid-template-columns: 1fr 7fr;
   height: 91vh;
 }
+
+.ProgressBar {
+  margin-left: 20px;
+  margin-right: 80px;
+  margin-bottom: 40px;
+}
