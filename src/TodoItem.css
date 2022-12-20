@@ -12,6 +12,7 @@
   color: #E5E5E5;
   margin-right: 13px;
   font-size: 1.8em;
+  cursor: pointer;
 }
 
 .TodoItemText {
@@ -19,9 +20,14 @@
   vertical-align: middle;
 }
 
+.TodoItemTextCompleted {
+  color: #BFC2C3;
+}
+
 .TodoItemDelete {
   color: #ABACAD;
   margin-left: auto;
+  cursor: pointer;
 }
 
 .TodoItemLine {

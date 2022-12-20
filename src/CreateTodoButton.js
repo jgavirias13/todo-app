@@ -4,7 +4,7 @@ import { IoMdAdd } from 'react-icons/io';
 
 function CreateTodoButton() {
   return (
-    <button className='CreateTodoButton'>
+    <button className='CreateTodoButton' onClick={() => console.log('click')}>
       <IoMdAdd className='CreateTodoButtonAdd'/>
       <span className='CreateTodoButtonText'>NEW TASK</span>
     </button>

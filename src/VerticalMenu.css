@@ -1,5 +1,5 @@
 .VerticalMenu {
-  width: 150px;
+  width: 170px;
   height: 100%;
   padding-left: 15px;
   display: flex;
@@ -23,6 +23,7 @@
 
 .VerticalMenu-filterOptions li {
   margin-bottom: 15px;
+  cursor: pointer;
 }
 
 .VerticalMenu-filterOptionsIcon {

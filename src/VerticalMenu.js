@@ -5,25 +5,25 @@ import { TbClearAll } from 'react-icons/tb';
 import { IoMdDoneAll } from 'react-icons/io';
 import { MdRemoveDone } from 'react-icons/md';
 
-function VerticalMenu() {
+function VerticalMenu({searchValue, setSearchValue, setFilterStatus, filterStatus}) {
   return (
     <div className='VerticalMenu'>
       <div>
         <div className='VerticalMenu-search'>
-          <TodoSearch />
+          <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
         </div>
         <ul className='VerticalMenu-filterOptions'>
-          <li>
-            <TbClearAll className='VerticalMenu-filterOptionsIcon VerticalMenu-filterOptionsActive' />
-            <span className='VerticalMenu-filterOptionsText VerticalMenu-filterOptionsActive'>All</span>
+          <li onClick={() => setFilterStatus('all')}>
+            <TbClearAll className={`VerticalMenu-filterOptionsIcon ${filterStatus === 'all' ? 'VerticalMenu-filterOptionsActive' : ''}`} />
+            <span className={`VerticalMenu-filterOptionsText ${filterStatus === 'all' ? 'VerticalMenu-filterOptionsActive' : ''}`}>All</span>
           </li>
-          <li>
-            <IoMdDoneAll className='VerticalMenu-filterOptionsIcon' />
-            <span className='VerticalMenu-filterOptionsText'>Completed</span>
+          <li onClick={() => setFilterStatus('completed')}>
+            <IoMdDoneAll className={`VerticalMenu-filterOptionsIcon ${filterStatus === 'completed' ? 'VerticalMenu-filterOptionsActive' : ''}`} />
+            <span className={`VerticalMenu-filterOptionsText ${filterStatus === 'completed' ? 'VerticalMenu-filterOptionsActive' : ''}`}>Completed</span>
           </li>
-          <li>
-            <MdRemoveDone className='VerticalMenu-filterOptionsIcon' />
-            <span className='VerticalMenu-filterOptionsText'>No Completed</span>
+          <li onClick={() => setFilterStatus('uncompleted')}>
+            <MdRemoveDone className={`VerticalMenu-filterOptionsIcon ${filterStatus === 'uncompleted' ? 'VerticalMenu-filterOptionsActive' : ''}`} />
+            <span className={`VerticalMenu-filterOptionsText ${filterStatus === 'uncompleted' ? 'VerticalMenu-filterOptionsActive' : ''}`}>No Completed</span>
           </li>
         </ul>
       </div>
