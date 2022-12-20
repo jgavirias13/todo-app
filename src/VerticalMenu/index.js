@@ -1,6 +1,6 @@
 import React from 'react';
 import './VerticalMenu.css';
-import { TodoSearch } from './TodoSearch';
+import { TodoSearch } from '../TodoSearch';
 import { TbClearAll } from 'react-icons/tb';
 import { IoMdDoneAll } from 'react-icons/io';
 import { MdRemoveDone } from 'react-icons/md';

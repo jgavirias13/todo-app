@@ -1,10 +1,10 @@
 import React from 'react';
-import { TodoCounter } from './TodoCounter';
-import { TodoList } from './TodoList';
-import { CreateTodoButton } from './CreateTodoButton';
-import { TodoItem } from './TodoItem';
-import { Header } from './Header';
-import { VerticalMenu } from './VerticalMenu';
+import { TodoCounter } from '../TodoCounter';
+import { TodoList } from '../TodoList';
+import { CreateTodoButton } from '../CreateTodoButton';
+import { TodoItem } from '../TodoItem';
+import { Header } from '../Header';
+import { VerticalMenu } from '../VerticalMenu';
 import './App.css';
 import ProgressBar from '@ramonak/react-progress-bar';
 
