@@ -1,12 +1,5 @@
-import React from 'react';
-import { TodoCounter } from '../TodoCounter';
-import { TodoList } from '../TodoList';
-import { CreateTodoButton } from '../CreateTodoButton';
-import { TodoItem } from '../TodoItem';
-import { Header } from '../Header';
-import { VerticalMenu } from '../VerticalMenu';
-import './App.css';
-import ProgressBar from '@ramonak/react-progress-bar';
+import React from 'react';  
+import { AppUi } from './AppUI';
 
 const defaultTodos = [
   { id: 1, text: 'Cortar Cebolla', completed: false },
@@ -55,26 +48,17 @@ function App() {
   }
 
   return (
-    <React.Fragment>
-      <Header />
-      <div className='container'>
-        <VerticalMenu
-          setSearchValue={setSearchValue}
-          searchValue={searchValue}
-          setFilterStatus={setFilterStatus}
-          filterStatus={filterStatus} />
-        <div>
-          <TodoCounter />
-          <ProgressBar completed={completedTodos / todos.length * 100} className='ProgressBar' customLabel=' ' bgColor='#53EBF4' height='5px' />
-          <TodoList>
-            {searchedTodos.map(todo => (
-              <TodoItem key={todo.id} text={todo.text} completed={todo.completed} toggleCompleteTodos={toggleCompleteTodos} id={todo.id} onDeleteTodo={deleteTodo} />
-            ))}
-          </TodoList>
-          <CreateTodoButton />
-        </div>
-      </div>
-    </React.Fragment>
+    <AppUi
+      setSearchValue={setSearchValue}
+      searchValue={searchValue}
+      setFilterStatus={setFilterStatus}
+      filterStatus={filterStatus}
+      completedTodos={completedTodos}
+      todos={todos}
+      toggleCompleteTodos={toggleCompleteTodos}
+      deleteTodo={deleteTodo}
+      searchedTodos={searchedTodos}
+    />
   );
 }
 
