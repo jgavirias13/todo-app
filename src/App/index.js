@@ -1,11 +1,24 @@
 import React from 'react';  
 import { AppUi } from './AppUI';
 
-function App() {
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
-  const savedTodos = !localStorageTodos || localStorageTodos === '' ? [] : JSON.parse(localStorageTodos);
+function useLocalStorage(itemName, initValue) {
+  const localStorageItem = localStorage.getItem(itemName);
+  const parsedItem = !localStorageItem || localStorageItem === '' ? initValue : JSON.parse(localStorageItem);
+  const [item, setItem] = React.useState(parsedItem);
 
-  const [todos, setTodos] = React.useState(savedTodos);
+  const saveItem = (newItem) => {
+    const stringifiedItem = JSON.stringify(newItem);
+    localStorage.setItem(itemName, stringifiedItem);
+    setItem(newItem)
+  }
+
+  return [item, saveItem];
+}
+
+function App() {
+
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+
   const [searchValue, setSearchValue] = React.useState('');
   const [filterStatus, setFilterStatus] = React.useState('all');
   const completedTodos = todos.filter(f => !!f.completed).length;
@@ -31,21 +44,14 @@ function App() {
     searchedTodos = filteredStatusTodos.filter(f => f.text.toUpperCase().includes(searchValue.toUpperCase()));
   }
 
-  const saveTodos = (newTodos) => {
-    const stringifiedTodos = JSON.stringify(newTodos);
-    localStorage.setItem('TODOS_V1', stringifiedTodos);
-  }
-
   const toggleCompleteTodos = (id, status) => {
     todos.find(f => f.id == id).completed = status;
     const newTodosList = [...todos];
-    setTodos(newTodosList);
     saveTodos(newTodosList);
   };
 
   const deleteTodo = (id) => {
     const newTodos = todos.filter(f => f.id != id);
-    setTodos(newTodos);
     saveTodos(newTodos);
   }
 
