@@ -4,13 +4,15 @@ import { TodoSearch } from '../TodoSearch';
 import { TbClearAll } from 'react-icons/tb';
 import { IoMdDoneAll } from 'react-icons/io';
 import { MdRemoveDone } from 'react-icons/md';
+import { TodoContext } from '../TodoContext';
 
-function VerticalMenu({searchValue, setSearchValue, setFilterStatus, filterStatus}) {
+function VerticalMenu() {
+  const {filterStatus, setFilterStatus} = React.useContext(TodoContext);
   return (
     <div className='VerticalMenu'>
       <div>
         <div className='VerticalMenu-search'>
-          <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
+          <TodoSearch/>
         </div>
         <ul className='VerticalMenu-filterOptions'>
           <li onClick={() => setFilterStatus('all')}>
