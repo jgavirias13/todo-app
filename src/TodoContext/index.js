@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocalStorage } from './useLocalStorage';
+import { v4 as uuidv4 } from 'uuid';
 
 const TodoContext = React.createContext();
 
@@ -9,6 +10,7 @@ function TodoProvider(props) {
 
   const [searchValue, setSearchValue] = React.useState('');
   const [filterStatus, setFilterStatus] = React.useState('all');
+  const [openModal, setOpenModal] = React.useState(false);
   const completedTodos = todos.filter(f => !!f.completed).length;
   let filteredStatusTodos = [];
 
@@ -43,6 +45,16 @@ function TodoProvider(props) {
     saveTodos(newTodos);
   }
 
+  const addTodo = (text) => {
+    const newTodos = [...todos];
+    newTodos.push({
+      id: uuidv4(),
+      text: text,
+      completed: false
+    });
+    saveTodos(newTodos);
+  }
+
   return (
     <TodoContext.Provider value={{
       loading,
@@ -56,6 +68,9 @@ function TodoProvider(props) {
       toggleCompleteTodos,
       deleteTodo,
       searchedTodos,
+      openModal,
+      setOpenModal,
+      addTodo
     }}>
       {props.children}
     </TodoContext.Provider>

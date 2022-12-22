@@ -6,6 +6,8 @@ import { TodoItem } from '../TodoItem';
 import { Header } from '../Header';
 import { VerticalMenu } from '../VerticalMenu';
 import { TodoContext } from '../TodoContext';
+import { Modal } from '../Modal';
+import { TodoForm } from '../TodoForm';
 import ProgressBar from '@ramonak/react-progress-bar';
 import './App.css';
 
@@ -17,14 +19,16 @@ function AppUi() {
     error,
     searchedTodos,
     toggleCompleteTodos,
-    deleteTodo
+    deleteTodo,
+    openModal,
+    setOpenModal
   } = React.useContext(TodoContext);
 
   return (
     <React.Fragment>
       <Header />
       <div className='container'>
-        <VerticalMenu/>
+        <VerticalMenu />
         <div>
           <TodoCounter />
           <ProgressBar completed={completedTodos / todos.length * 100} className='ProgressBar' customLabel=' ' bgColor='#53EBF4' height='5px' />
@@ -36,7 +40,12 @@ function AppUi() {
               <TodoItem key={todo.id} text={todo.text} completed={todo.completed} toggleCompleteTodos={toggleCompleteTodos} id={todo.id} onDeleteTodo={deleteTodo} />
             ))}
           </TodoList>
-          <CreateTodoButton />
+          {!!openModal && (
+            <Modal>
+              <TodoForm/>
+            </Modal>
+          )}
+          <CreateTodoButton clickEvent={setOpenModal}/>
         </div>
       </div>
     </React.Fragment>
