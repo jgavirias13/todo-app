@@ -13,3 +13,7 @@
 .AppMessageInfo{
   margin-left: 20px;
 }
+
+.Loader {
+  justify-content: center;
+}
