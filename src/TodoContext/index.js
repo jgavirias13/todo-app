@@ -24,6 +24,7 @@ function TodoProvider(props) {
     case 'uncompleted':
       filteredStatusTodos = todos.filter(f => !f.completed);
       break;
+    default:
   }
 
   let searchedTodos = [];
@@ -35,13 +36,13 @@ function TodoProvider(props) {
   }
 
   const toggleCompleteTodos = (id, status) => {
-    todos.find(f => f.id == id).completed = status;
+    todos.find(f => f.id === id).completed = status;
     const newTodosList = [...todos];
     saveTodos(newTodosList);
   };
 
   const deleteTodo = (id) => {
-    const newTodos = todos.filter(f => f.id != id);
+    const newTodos = todos.filter(f => f.id !== id);
     saveTodos(newTodos);
   }
 

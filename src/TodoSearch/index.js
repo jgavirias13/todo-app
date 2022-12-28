@@ -4,7 +4,7 @@ import { AiOutlineSearch} from 'react-icons/ai';
 import { TodoContext } from '../TodoContext';
 
 function TodoSearch() {
-  const {searchValue, setSearchValue} = React.useContext(TodoContext);
+  const {setSearchValue} = React.useContext(TodoContext);
 
   const onSearchValueChange = (event) => {
     setSearchValue(event.target?.value);
