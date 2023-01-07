@@ -10,9 +10,11 @@ import { Modal } from '../Modal';
 import { TodoForm } from '../TodoForm';
 import { TodoSearch } from '../TodoSearch';
 import { TodoFilter } from '../TodoFilter';
+import { TodoLoader } from '../TodoLoader';
+import { TodoError } from '../TodoError';
+import { TodoInfo } from '../TodoInfo';
 import ProgressBar from '@ramonak/react-progress-bar';
 import './App.css';
-import { BallTriangle } from 'react-loader-spinner';
 
 function App() {
 
@@ -43,9 +45,9 @@ function App() {
         <div>
           <TodoCounter />
           <ProgressBar completed={completedTodos / todos.length * 100} className='ProgressBar' customLabel=' ' bgColor='#53EBF4' height='5px' />
-          {loading && <BallTriangle height={80} width={80} color={'#53EBF4'} wrapperClass={'Loader'} />}
-          {error && <p className='AppMessageInfo'>Hubo un error al cargar la informacion</p>}
-          {(!loading && !searchedTodos.length) && <p className='AppMessageInfo'>No tienes tareas pendientes</p>}
+          {loading && <TodoLoader/>}
+          {error && <TodoError/>}
+          {(!loading && !searchedTodos.length) && <TodoInfo/>}
           <TodoList>
             {searchedTodos.map(todo => (
               <TodoItem key={todo.id} text={todo.text} completed={todo.completed} toggleCompleteTodos={toggleCompleteTodos} id={todo.id} onDeleteTodo={deleteTodo} />
