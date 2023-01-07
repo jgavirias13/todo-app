@@ -8,6 +8,8 @@ import { VerticalMenu } from '../VerticalMenu';
 import { TodoContext } from '../TodoContext';
 import { Modal } from '../Modal';
 import { TodoForm } from '../TodoForm';
+import { TodoSearch } from '../TodoSearch';
+import { TodoFilter } from '../TodoFilter';
 import ProgressBar from '@ramonak/react-progress-bar';
 import './App.css';
 import { BallTriangle } from 'react-loader-spinner';
@@ -22,18 +24,25 @@ function AppUi() {
     toggleCompleteTodos,
     deleteTodo,
     openModal,
-    setOpenModal
+    setOpenModal,
+    filterStatus,
+    setFilterStatus,
+    setSearchValue,
+    addTodo
   } = React.useContext(TodoContext);
 
   return (
     <React.Fragment>
       <Header />
       <div className='container'>
-        <VerticalMenu />
+        <VerticalMenu>
+          <TodoSearch setSearchValue={setSearchValue} />
+          <TodoFilter filterStatus={filterStatus} setFilterStatus={setFilterStatus} />
+        </VerticalMenu>
         <div>
           <TodoCounter />
           <ProgressBar completed={completedTodos / todos.length * 100} className='ProgressBar' customLabel=' ' bgColor='#53EBF4' height='5px' />
-          {loading && <BallTriangle height={80} width={80} color={'#53EBF4'} wrapperClass={'Loader'}/>}
+          {loading && <BallTriangle height={80} width={80} color={'#53EBF4'} wrapperClass={'Loader'} />}
           {error && <p className='AppMessageInfo'>Hubo un error al cargar la informacion</p>}
           {(!loading && !searchedTodos.length) && <p className='AppMessageInfo'>No tienes tareas pendientes</p>}
           <TodoList>
@@ -43,10 +52,10 @@ function AppUi() {
           </TodoList>
           {!!openModal && (
             <Modal>
-              <TodoForm/>
+              <TodoForm addTodo={addTodo} setOpenModal={setOpenModal} />
             </Modal>
           )}
-          <CreateTodoButton clickEvent={setOpenModal}/>
+          <CreateTodoButton clickEvent={setOpenModal} />
         </div>
       </div>
     </React.Fragment>
