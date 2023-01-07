@@ -1,9 +1,9 @@
 import React from 'react';
 import './TodoInfo.css';
 
-function TodoInfo() {
+function TodoInfo({ text }) {
   return (
-    <p className='MessageInfo'>No tienes tareas pendientes</p>
+    <p className='MessageInfo'>{text}</p>
   )
 }
 

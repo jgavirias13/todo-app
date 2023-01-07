@@ -31,6 +31,7 @@ function App() {
     filterStatus,
     setFilterStatus,
     setSearchValue,
+    searchValue,
     addTodo
   } = useTodos();
 
@@ -45,14 +46,28 @@ function App() {
         <div>
           <TodoCounter />
           <ProgressBar completed={completedTodos / todos.length * 100} className='ProgressBar' customLabel=' ' bgColor='#53EBF4' height='5px' />
-          {loading && <TodoLoader/>}
-          {error && <TodoError/>}
-          {(!loading && !searchedTodos.length) && <TodoInfo/>}
-          <TodoList>
-            {searchedTodos.map(todo => (
+
+          <TodoList
+            error={error}
+            loading={loading}
+            todos={searchedTodos}
+            searchValue={searchValue}
+            totalTodos={todos.length}
+            onError={() => <TodoError/>}
+            onLoading={() => <TodoLoader/>}
+            onEmptyTodos={() => <TodoInfo text={'Crea tu primera tarea'}/>}
+            onEmptySearchResults={(searchText) => <TodoInfo text={`No hay resultados para tu busqueda "${searchText}"`}/>}
+            /* render={todo => (
               <TodoItem key={todo.id} text={todo.text} completed={todo.completed} toggleCompleteTodos={toggleCompleteTodos} id={todo.id} onDeleteTodo={deleteTodo} />
-            ))}
+            )} */
+          >
+            {
+              todo => (
+                <TodoItem key={todo.id} text={todo.text} completed={todo.completed} toggleCompleteTodos={toggleCompleteTodos} id={todo.id} onDeleteTodo={deleteTodo} />
+              )
+            }
           </TodoList>
+
           {!!openModal && (
             <Modal>
               <TodoForm addTodo={addTodo} setOpenModal={setOpenModal} />
