@@ -1,7 +1,6 @@
 import React from 'react';
 import './TodoSearch.css';
 import { AiOutlineSearch} from 'react-icons/ai';
-import { TodoContext } from '../TodoContext';
 
 function TodoSearch({ setSearchValue }) {
 
