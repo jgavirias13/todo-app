@@ -2,7 +2,7 @@ import React from 'react';
 import './TodoSearch.css';
 import { AiOutlineSearch} from 'react-icons/ai';
 
-function TodoSearch({ setSearchValue }) {
+function TodoSearch({ setSearchValue, loading }) {
 
   const onSearchValueChange = (event) => {
     setSearchValue(event.target?.value);
@@ -10,7 +10,7 @@ function TodoSearch({ setSearchValue }) {
 
   return (
     <div>
-      <input className='TodoSearch' placeholder="Search" onChange={onSearchValueChange}/>
+      <input className='TodoSearch' placeholder="Search" onChange={onSearchValueChange} disabled={loading}/>
       <AiOutlineSearch className='TodoSearch-icon'/>
     </div>
   )

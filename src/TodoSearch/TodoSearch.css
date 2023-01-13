@@ -8,6 +8,11 @@
   margin-top: 40px;
 }
 
+.TodoSearch:disabled {
+  border-width: 0 0 1px;
+  border-color: #C8C8C8;
+}
+
 .TodoSearch::placeholder {
   color: #C8C8C8;
 }

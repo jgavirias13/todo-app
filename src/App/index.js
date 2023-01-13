@@ -40,7 +40,7 @@ function App() {
       <Header />
       <div className='container'>
         <VerticalMenu>
-          <TodoSearch setSearchValue={setSearchValue} />
+          <TodoSearch setSearchValue={setSearchValue} loading={loading}/>
           <TodoFilter filterStatus={filterStatus} setFilterStatus={setFilterStatus} />
         </VerticalMenu>
         <div>
