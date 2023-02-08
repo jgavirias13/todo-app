@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 function useTodos() {
 
-  const { item: todos, saveItem: saveTodos, loading, error } = useLocalStorage('TODOS_V1', []);
+  const { item: todos, saveItem: saveTodos, loading, error, sincronize: sincronizeTodos } = useLocalStorage('TODOS_V1', []);
 
   const [searchValue, setSearchValue] = React.useState('');
   const [filterStatus, setFilterStatus] = React.useState('all');
@@ -68,7 +68,8 @@ function useTodos() {
       searchedTodos,
       openModal,
       setOpenModal,
-      addTodo
+      addTodo,
+      sincronizeTodos
     }
   )
 }

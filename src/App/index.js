@@ -13,6 +13,7 @@ import { TodoFilter } from '../TodoFilter';
 import { TodoLoader } from '../TodoLoader';
 import { TodoError } from '../TodoError';
 import { TodoInfo } from '../TodoInfo';
+import { ChangeAlertWithStorageListener } from '../ChangeAlert';
 import ProgressBar from '@ramonak/react-progress-bar';
 import './App.css';
 
@@ -32,7 +33,8 @@ function App() {
     setFilterStatus,
     setSearchValue,
     searchValue,
-    addTodo
+    addTodo,
+    sincronizeTodos
   } = useTodos();
 
   return (
@@ -76,6 +78,7 @@ function App() {
           <CreateTodoButton clickEvent={setOpenModal} />
         </div>
       </div>
+      <ChangeAlertWithStorageListener sincronize={sincronizeTodos} />
     </React.Fragment>
   );
 }
